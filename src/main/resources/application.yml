@@ -1,0 +1,20 @@
+server:
+  port: 8088
+spring:
+  rabbitmq:
+    host: 192.168.33.187
+    port: 5672
+    username: tester
+    password: tester001
+    publisher-returns: true #支持发布确认
+    publisher-confirm-type: correlated #支持发布返回
+    listener:
+      simple:
+        acknowledge-mode: manual #acknowledgeMode设置为手动模式(NONE,MANUAL,AUTO)
+        concurrency: 1 #当前监听容器数
+        max-concurrency: 1 #最大数
+        retry:
+          enabled: true #是否支持重试
+        prefetch: 1
+      direct:
+        acknowledge-mode: manual #acknowledgeMode设置为手动模式
